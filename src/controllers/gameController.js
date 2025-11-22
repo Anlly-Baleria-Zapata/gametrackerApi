@@ -24,7 +24,7 @@ export const createGame = async (req, res) => {
 // Obtener juego por campo 'id' (número simple o string)
 export const getGameById = async (req, res) => {
   try {
-    const juego = await Game.findOne({ id: req.params.id });
+    const juego = await Game.findOne({ _id: req.params.id });
     if (!juego) return res.status(404).json({ message: "Juego no encontrado" });
     res.json(juego);
   } catch (error) {
@@ -35,7 +35,7 @@ export const getGameById = async (req, res) => {
 // Actualizar juego por campo 'id'
 export const updateGame = async (req, res) => {
   try {
-    const updated = await Game.findOneAndUpdate({ id: req.params.id }, req.body, { new: true });
+    const updated = await Game.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true });
     if (!updated) return res.status(404).json({ message: "Juego no encontrado" });
     res.status(200).json(updated);
   } catch (error) {
@@ -46,7 +46,7 @@ export const updateGame = async (req, res) => {
 // Eliminar juego por campo 'id'
 export const deleteGame = async (req, res) => {
   try {
-    const deleted = await Game.findOneAndDelete({ id: req.params.id });
+    const deleted = await Game.findOneAndDelete({ _id: req.params.id });
     if (!deleted) return res.status(404).json({ message: "Juego no encontrado" });
     res.status(200).json({ message: "Juego eliminado correctamente" });
   } catch (error) {

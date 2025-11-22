@@ -10,7 +10,8 @@ const gameSchema = new mongoose.Schema({
   descripcion: { type: String, required: true },
   completado: { type: Boolean, default: false },
   fechaCreacion: { type: Number, required: true }, 
-  id: { type: String, required: true } // si vas a usar tu propio id además del _id de Mongo
+  id: { type: String, required: true }, // si vas a usar tu propio id además del _id de Mongo,
+  reviews: [{ type: mongoose.Schema.Types.ObjectId, ref: "Review" }]
 }, { timestamps: true });
 
 export default mongoose.model("Game", gameSchema);
