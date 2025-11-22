@@ -33,7 +33,7 @@ const reviewSchema = mongoose.Schema({
 });
 
 // Middleware para actualizar fechaActualizacion al guardar cambios
-reviewSchema.pre("save", function(next) {
+reviewSchema.pre("save", function (next) {
   this.fechaActualizacion = Date.now();
   next();
 });
